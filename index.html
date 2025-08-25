@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cute Quote Generator</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="theme-toggle">
+    <button id="toggleTheme" aria-label="Toggle dark/light">
+      <span id="themeIcon">🌙</span>
+    </button>
+  </div>
+
+  <!-- Favorites toggle button -->
+  <button id="favoritesToggle" class="favorites-toggle" aria-label="Toggle Favorites View">❤️ Favorites</button>
+
+  <!-- Favorites sidebar/tab -->
+  <aside id="favoritesTab" class="favorites-tab hidden" aria-label="Favorites Quotes">
+    <h2>Your Favorites</h2>
+    <div id="favoritesList"></div>
+    <button id="closeFavorites" aria-label="Close Favorites">Close</button>
+  </aside>
+
+  <main class="quote-main">
+    <div class="cute-mascot"></div>
+    <div class="quote-card animated" id="quoteCard">
+      <blockquote>
+        <span class="quote-text" id="quoteText">Loading...</span>
+        <footer class="quote-author" id="quoteAuthor"></footer>
+      </blockquote>
+      <button id="newQuote" class="bouncy">New Quote</button>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
