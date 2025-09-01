@@ -1,4 +1,3 @@
-// Local fallback quotes array
 const fallbackQuotes = [
   { text: "Believe you can and you're halfway there.", author: "Theodore Roosevelt" },
   { text: "Be yourself; everyone else is already taken.", author: "Oscar Wilde" },
@@ -125,15 +124,20 @@ function showQuote(quote) {
 // Fetch random quote from API or fallback
 async function fetchQuote() {
   try {
-    const response = await fetch('https://api.quotable.io/random');
-    if (!response.ok) throw new Error('API unavailable');
+    const response = await fetch('https://api.api-ninjas.com/v1/quotes', {
+      method: 'GET',
+      headers: { 'X-Api-Key': '4cToGayJEEaabSkuJDQvxA==KAJjmqpV1AoSNHe9' }
+    });
+    if (!response.ok) throw new Error('API Error');
     const data = await response.json();
-    return { text: data.content, author: data.author || 'Unknown' };
+    // data is an array of quotes, use first one
+    return { text: data[0].quote, author: data[0].author || 'Unknown' };
   } catch {
     console.warn('API fetch failed; using fallback');
     return fallbackQuotes[Math.floor(Math.random() * fallbackQuotes.length)];
   }
 }
+
 
 // New quote button handler
 newQuoteBtn.addEventListener('click', async () => {
